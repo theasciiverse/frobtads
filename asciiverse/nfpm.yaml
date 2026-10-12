@@ -1,0 +1,51 @@
+# System packages (.deb, .rpm, .apk, Arch) for FrobTADS, built by nfpm from
+# the same static binary as the av archive (build/, made by
+# asciiverse/build-frobtads.sh). The release workflow sets VERSION, RELEASE
+# (our packaging release) and ARCH (amd64 or arm64).
+#
+# No .desktop file on purpose: av is the one place titles are started from,
+# so Asciiverse packages never add menu entries (asciiverse/CLAUDE.md).
+#
+# Named frobtads-asciiverse so it never collides with a distribution's own
+# frobtads package; it installs the same frob command and conflicts with it.
+#
+# The TADS licences allow giving copies away, never selling them, so these
+# packages may only ever be offered free of charge.
+name: frobtads-asciiverse
+arch: ${ARCH}
+platform: linux
+version: ${VERSION}
+release: ${RELEASE}
+section: games
+priority: optional
+maintainer: Asciiverse <packages@asciiverse.sh>
+vendor: Asciiverse
+homepage: https://github.com/theasciiverse/frobtads
+license: TADS Freeware Source Code License
+conflicts: [frobtads]
+provides: [frobtads]
+description: |
+  Interpreter for TADS 2 and TADS 3 interactive fiction, in the terminal.
+  Plays text adventures written with TADS (.gam and .t3 story files), with
+  a status line, colours and scroll-back.
+  A static build of FrobTADS by Nikos Chantziaras, on the TADS virtual
+  machines by Michael J. Roberts, packaged by Asciiverse.
+contents:
+  - src: build/frob
+    dst: /usr/bin/frob
+    file_info: { mode: 0755 }
+  - src: build/COPYING
+    dst: /usr/share/doc/frobtads-asciiverse/copyright
+    file_info: { mode: 0644 }
+  - src: build/LICENSE.TADS2
+    dst: /usr/share/doc/frobtads-asciiverse/LICENSE.TADS2
+    file_info: { mode: 0644 }
+  - src: build/LICENSE.TADS3
+    dst: /usr/share/doc/frobtads-asciiverse/LICENSE.TADS3
+    file_info: { mode: 0644 }
+  - src: build/NOTICE
+    dst: /usr/share/doc/frobtads-asciiverse/NOTICE
+    file_info: { mode: 0644 }
+  - src: doc/README
+    dst: /usr/share/doc/frobtads-asciiverse/README
+    file_info: { mode: 0644 }
