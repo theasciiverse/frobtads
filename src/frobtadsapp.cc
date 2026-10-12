@@ -127,6 +127,14 @@ FrobTadsApplication::fRunTads3( char* filename, int argc, const char* const* arg
     params.saved_state = savedState;
     params.netconfig = netconfig;
 
+    // The T3VM resolves file names (saved games included) against the
+    // game's directory unless told otherwise, so --no-chdir alone would
+    // still save next to the game. Use the current directory instead, for
+    // file names and the file safety sandbox alike.
+    if (not this->options.changeDir) {
+        params.file_dir = ".";
+    }
+
     // Invoke the VM to run the program.
     int vmRet = vm_run_image(&params);
 
