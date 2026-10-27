@@ -73,3 +73,9 @@ identifier exists for these licences.
 - Windows: frob's curses interface uses Unix terminal calls (termios,
   signals).
 - frobd (the debugger build), tadsc and t3make.
+
+## Ours
+
+- **How to play it, at the top of README.** A short note on installing and
+  starting it with av, or from a release archive; the original text follows
+  unchanged.
