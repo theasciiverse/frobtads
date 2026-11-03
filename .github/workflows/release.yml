@@ -29,6 +29,9 @@ env:
   ID: frobtads
   BIN: frob
   TAG: ${{ inputs.tag || github.ref_name }}
+  # CMake 4, on GitHub's macOS runners, refuses frobtads' old
+  # cmake_minimum_required; this lets it build with today's policies
+  CMAKE_POLICY_VERSION_MINIMUM: "3.5"
 
 permissions:
   contents: write
